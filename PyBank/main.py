@@ -1,11 +1,6 @@
 import os
 import csv
 
-# best way to get number of rows of csv?
-# sum(1 for row in budgetReader)
-# or
-# len(file1.readlines())
-
 # should these be inputs?
 budgetPath = os.path.join('..','budget_data.csv')
 resultsPath = os.path.join('..','budget_data_results.csv')
@@ -13,7 +8,6 @@ resultsPath = os.path.join('..','budget_data_results.csv')
 with open(budgetPath, 'r', newline = '') as file1:
     
     budgetReader = csv.reader(file1, delimiter = ',')
-    # totalMonths = len(list(budgetReader)) # why
     budgetHeader = next(budgetReader)
 
     # initializing isn't strictly necessary in Python (I think), but it's still helpful to know beforehand 
@@ -23,7 +17,6 @@ with open(budgetPath, 'r', newline = '') as file1:
 
     cProfit = 0
     pProfit = 0
-    # profitChanges = [None]*totalMonths
     profitChanges = []
 
     maxIncrease = 0
@@ -39,10 +32,10 @@ with open(budgetPath, 'r', newline = '') as file1:
         netProfit += cProfit
 
         # the first element of this list will be equal to the first profit.
-        # is it worse to append, or to pre-allocate?
+        # I've heard it's better to preallocate a list with its expected length, rather than appending in
+        # every update, but I couldn't figure out how to ge the number of lines in the csv file without 
+        # advancing through it
         profitChanges.append(cProfit-pProfit)
-        # profitChanges[nMonths-1] = cProfit - pProfit
-        
         
         # finding maximum and minimum profits, and their dates
         if cProfit > maxIncrease:

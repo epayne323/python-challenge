@@ -15,10 +15,10 @@ with open(electionPath, 'r', newline = '') as file1:
     for row in electionReader:
         totalVotes += 1
 
-        # if the candidate name is already a key in the dictionary, add 1 to the vote total
+        # if the candidate name is already a key in the dictionary, add 1 to their vote total
         if row[2] in candidateTotals:
             candidateTotals[row[2]] += 1
-        # otherwise set the vote total to 1
+        # otherwise set their vote total to 1
         else:
             candidateTotals[row[2]] = 1
         
@@ -44,7 +44,5 @@ with open(resultsPath, 'w', newline = '') as file2:
     for key in candidateTotals:
         electionWriter.writerow([f"{key}: {candidateTotals[key]*100/totalVotes}% ({candidateTotals[key]})"])
     electionWriter.writerow(["----------------"])
-    # truly, lambdas are the intended solution.
-    # no really, use the built in max function, setting the key function to look at the values
     electionWriter.writerow(["Winner: " + max(candidateTotals, key = lambda x: candidateTotals[x])])
     electionWriter.writerow(["----------------"])
