@@ -1,6 +1,16 @@
 import os
 import csv
 
+# the instructions state:
+
+# Your scripts should work for each dataset provided. Run your script for each dataset separately 
+# to make sure that the code works for different data.
+
+# However, there are only two csv files for this assignment, and they are formatted differently.
+# to make this applicable to different csvs with the same format, I would use inputs:
+
+# filename = input("Please enter name of csv file (file must be in same location as script): ")
+# filepath = os.path.join('..',filename)
 electionPath = os.path.join('..','election_data.csv')
 resultsPath = os.path.join('..','election_data_results.csv')
 

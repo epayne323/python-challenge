@@ -1,7 +1,16 @@
 import os
 import csv
 
-# should these be inputs?
+# the instructions state:
+
+# Your scripts should work for each dataset provided. Run your script for each dataset separately 
+# to make sure that the code works for different data.
+
+# However, there are only two csv files for this assignment, and they are formatted differently.
+# to make this applicable to different csvs with the same format, I would use inputs:
+
+# filename = input("Please enter name of csv file (file must be in same location as script): ")
+# filepath = os.path.join('..',filename)
 budgetPath = os.path.join('..','budget_data.csv')
 resultsPath = os.path.join('..','budget_data_results.csv')
 
